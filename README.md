@@ -1,0 +1,24 @@
+# ubuntu-command
+(1)创建虚拟环境
+#使用 conda create -n your_env_name python=X.X（2.7、3.6等)命令创建python版本为X.X、名字为your_env_name的虚拟环境。
+#your_env_name文件可以在Anaconda安装目录envs文件下找到
+# 删除虚拟环境。使用命令conda remove -n your_env_name(虚拟环境名称) --all， 即可删除。
+#删除环境中的某个包。使用命令conda remove --name your_env_name  package_name 即可。
+#conda env list 或 conda info -e 查看当前存在哪些虚拟环境
+cd /home/hua/anaconda3/envs
+conda create -n remoteSensing python=3.6
+（2）打开pycharm，引入虚拟环境，安装必要的包
+（3）激活虚拟环境
+source activate remoteSensing
+（4）运行后台命令
+#在使用nohup命令，后台运行命令之后，需要使用exit正常退出当前账户，这样才能保证命令一直在后台运行。
+#jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。
+#但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
+#command>out.file是将command的输出重定向到out.file文件，即输出内容不打印到屏幕上，而是输出到out.file文件中。
+#2>&1 是将标准出错重定向到标准输出，这里的标准输出已经重定向到了out.file文件，即将标准出错也输出到out.file文件中。
+#最后一个&， 是该命令在后台执行。
+#试想2>1代表什么，2与>结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；
+#换成2>&1，&与1结合就代表标准输出了，就变成错误重定向到标准输出.
+nohup command > myout.file 2>&1 &
+top  #查看运行的进程
+
