@@ -26,3 +26,5 @@ source activate remoteSensing
 & top #查看运行的进程
 
 nohup command > myout.file 2>&1 
+jobs -l
+top
