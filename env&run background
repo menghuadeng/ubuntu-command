@@ -25,6 +25,6 @@ source activate remoteSensing
 #换成2>&1，&与1结合就代表标准输出了，就变成错误重定向到标准输出. 
 & top #查看运行的进程
 
-nohup command > myout.file 2>&1 
+nohup command > myout.file 2>&1 &
 jobs -l
 top
